@@ -1,0 +1,30 @@
+version: "3"
+services:
+  app:
+    build: .
+    depends_on:
+      - postgres
+    links:
+      - postgres
+    environment:
+      NODE_ENV: development
+      DB_HOST: postgres
+      DB_USER: meco
+      DB_PASSWORD: ********
+      DB_DATABASE: products
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    command: npm start
+    volumes:
+      - .:/app/
+      - /app/node_modules
+  postgres:
+    image: postgres:10.4
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: meco
+      POSTGRES_PASSWORD: ********
+      POSTGRES_DB: products

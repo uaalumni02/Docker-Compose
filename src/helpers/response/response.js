@@ -6,10 +6,11 @@ const responseOkCreated = (res, data) => {
   });
 };
 
-const responseServerError = (res) => {
+const responseServerError = (res, error) => {
   return res.status(500).json({
     success: false,
-    message: "internal server error",
+    message: "internal server errorssss",
+    error
   });
 };
 const responseOk = (res, data) => {

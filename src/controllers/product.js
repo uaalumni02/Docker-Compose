@@ -18,7 +18,7 @@ class ProductData {
       const getAllProducts = await Query.getProducts(req);
       return Response.responseOk(res, getAllProducts);
     } catch (error) {
-      return Response.responseServerError(res);
+      return Response.responseServerError(res, { error: error.message });
     }
   }
 }
